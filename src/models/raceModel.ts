@@ -1,47 +1,49 @@
 import mongoose from "mongoose";
-import { RaceResult } from "./raceresultModel";
-
-const raceSchema = new mongoose.Schema(
-  {
-    round: {
-      type: Number,
-      required: true,
-    },
-    circuit_id: {
-      type: [mongoose.Types.ObjectId],
-      ref: "Circuit",
-      required: true,
-      default: [],
-    },
-    date: {
-      type: String,
-      required: true,
-    },
-    sprint_race: {
-      type: Boolean,
-      required: true,
-    },
-    fastest_lap: {
-      type: [mongoose.Types.ObjectId],
-      ref: "Driver",
-      required: true,
-      default: [],
-    },
-    // race_results: {
-    //   type: [mongoose.Types.ObjectId],
-    //   ref: "RaceResult",
-    //   required: true,
-    //   default: [],
-    // },
-    race_results: {
-      type: [RaceResult.schema],
-      required: true,
-      default: [],
-    },
+import { Types } from "mongoose";
+const raceSchema = new mongoose.Schema({
+  round: {
+    type: Number,
+    required: true,
   },
-  {
-    timestamps: true,
-  }
-);
-
+  circuit_id: {
+    type: String,
+    required: true,
+  },
+  date: {
+    type: String,
+    required: true,
+  },
+  sprint_race: {
+    type: Boolean,
+    default: false,
+  },
+  fastest_lap: {
+    type: String,
+    default: "",
+  },
+  // race_results: {
+  // harcoded because of already given data
+  // }
+  race_results: [
+    {
+      position: {
+        type: Number,
+        required: true,
+      },
+      driver_id: {
+        type: String,
+        required: true,
+        trim: true,
+      },
+      time: {
+        type: Number,
+        required: true,
+      },
+      points: {
+        type: Number,
+        required: true,
+      },
+    },
+  ],
+});
 export const Race = mongoose.model("Race", raceSchema);

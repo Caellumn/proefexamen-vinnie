@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+
 const driverSchema = new mongoose.Schema(
   {
     driver_id: {
@@ -7,7 +8,12 @@ const driverSchema = new mongoose.Schema(
       trim: true,
     },
     permanentNumber: {
-      type: Number,
+      type: String,
+      required: true,
+      trim: true,
+    },
+    code: {
+      type: String,
       required: true,
       trim: true,
     },
@@ -51,4 +57,5 @@ const driverSchema = new mongoose.Schema(
     timestamps: true,
   }
 );
+
 export const Driver = mongoose.model("Driver", driverSchema);

@@ -42,21 +42,13 @@ const teamSchema = new mongoose.Schema(
     //     required: true,
     //   },
     // },
-    drivers: {
-      type: [
-        {
-          driver_id: {
-            type: [mongoose.Types.ObjectId],
-            ref: "Driver",
-            required: true,
-          },
-          position: {
-            type: Number,
-            required: true,
-          },
-        },
-      ],
-    },
+    drivers: [
+      {
+        type: mongoose.Schema.Types.String,
+        ref: "Driver",
+        required: true,
+      },
+    ],
   },
   {
     timestamps: true,

@@ -5,8 +5,7 @@ const { ValidationError } = MongooseError;
 
 export const getTeams = async (req: Request, res: Response) => {
   try {
-    const teams = await Team.find();
-
+    const teams = await Team.find().populate("drivers");
     res.status(200).json(teams);
   } catch (error: unknown) {
     if (error instanceof Error) {
