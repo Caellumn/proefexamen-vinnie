@@ -27,10 +27,10 @@ app.all("*", notFound);
 
 // Database connection
 try {
-  if (!process.env.MONGO_URI_LIVE) {
+  if (!process.env.MONGO_URI) {
     throw new Error("Missing MONGO_URI environment variable in .env file");
   }
-  await mongoose.connect(process.env.MONGO_URI_LIVE);
+  await mongoose.connect(process.env.MONGO_URI);
   console.log("Database connection OK");
 } catch (err) {
   console.error(err);
