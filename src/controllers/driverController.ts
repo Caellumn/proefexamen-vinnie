@@ -25,9 +25,9 @@ export const getDrivers = async (req: Request, res: Response) => {
         );
       });
 
-      res.status(201).json(filteredDrivers);
+      res.status(200).json(filteredDrivers);
     } else {
-      res.status(201).json(updatedDrivers);
+      res.status(200).json(updatedDrivers);
     }
   } catch (error: unknown) {
     if (error instanceof Error) {

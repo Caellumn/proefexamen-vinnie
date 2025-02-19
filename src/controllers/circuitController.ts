@@ -14,7 +14,7 @@ export const getCircuits = async (req: Request, res: Response) => {
 
     const circuits = await Circuit.find(query);
 
-    res.status(201).json(circuits);
+    res.status(200).json(circuits);
   } catch (error: unknown) {
     if (error instanceof Error) {
       res.status(500).json({ message: error.message });

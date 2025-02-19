@@ -7,7 +7,7 @@ export const getTeams = async (req: Request, res: Response) => {
   try {
     const teams = await Team.find();
 
-    res.status(201).json(teams);
+    res.status(200).json(teams);
   } catch (error: unknown) {
     if (error instanceof Error) {
       res.status(500).json({ message: error.message });

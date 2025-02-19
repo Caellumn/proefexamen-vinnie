@@ -31,11 +31,31 @@ const teamSchema = new mongoose.Schema(
       required: true,
       trim: true,
     },
+    // drivers: {
+    //   driver_id: {
+    //     type: [mongoose.Types.ObjectId],
+    //     ref: "Driver",
+    //     required: true,
+    //   },
+    //   position: {
+    //     type: Number,
+    //     required: true,
+    //   },
+    // },
     drivers: {
-      type: [mongoose.Types.ObjectId],
-      ref: "Driver",
-      required: true,
-      default: [],
+      type: [
+        {
+          driver_id: {
+            type: [mongoose.Types.ObjectId],
+            ref: "Driver",
+            required: true,
+          },
+          position: {
+            type: Number,
+            required: true,
+          },
+        },
+      ],
     },
   },
   {
