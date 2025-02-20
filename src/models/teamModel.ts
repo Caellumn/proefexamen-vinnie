@@ -44,9 +44,15 @@ const teamSchema = new mongoose.Schema(
     // },
     drivers: [
       {
-        type: mongoose.Schema.Types.String,
-        ref: "Driver",
-        required: true,
+        driver_id: {
+          type: String,
+          required: true,
+          trim: true,
+        },
+        position: {
+          type: Number,
+          required: true,
+        },
       },
     ],
   },
